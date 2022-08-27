@@ -1,0 +1,27 @@
+---
+project_name: cicd
+
+builds:
+  - main: ./cmd/playground
+    binary: playground
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  - wrap_in_directory: true
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE
+
+checksum:
+  name_template: checksums.txt
