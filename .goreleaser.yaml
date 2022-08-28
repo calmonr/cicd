@@ -28,3 +28,41 @@ checksum:
 
 changelog:
   use: github-native
+
+dockers:
+  - goos: linux
+    goarch: amd64
+    image_templates:
+      - &amd_image_gh ghcr.io/calmonr/cicd:v{{ .Version }}-amd64
+      - &amd_image_dh calmonr/cicd:v{{ .Version }}-amd64
+    dockerfile: &dockerfile Dockerfile.release
+    use: buildx
+    build_flag_templates:
+      - --platform=linux/amd64
+  - goos: linux
+    goarch: arm64
+    image_templates:
+      - &arm_image_gh ghcr.io/calmonr/cicd:v{{ .Version }}-arm64
+      - &arm_image_dh calmonr/cicd:v{{ .Version }}-arm64
+    dockerfile: *dockerfile
+    use: buildx
+    build_flag_templates:
+      - --platform=linux/arm64
+
+docker_manifests:
+  - name_template: ghcr.io/calmonr/cicd:v{{ .Version }}
+    image_templates:
+      - *amd_image_gh
+      - *arm_image_gh
+  - name_template: ghcr.io/calmonr/cicd:latest
+    image_templates:
+      - *amd_image_gh
+      - *arm_image_gh
+  - name_template: calmonr/cicd:v{{ .Version }}
+    image_templates:
+      - *amd_image_dh
+      - *arm_image_dh
+  - name_template: calmonr/cicd:latest
+    image_templates:
+      - *amd_image_dh
+      - *arm_image_dh

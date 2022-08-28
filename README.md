@@ -4,7 +4,7 @@
 
 For now there are two behaviors:
 
-1. If you push a new tag ([following standads](https://goreleaser.com/limitations/semver/)) it will automatically build and release.
+1. If you push a new tag ([following standads](https://goreleaser.com/limitations/semver/)) it will automatically build and release. (example: https://github.com/calmonr/cicd/releases)
 2. If you send a pull request it will lint. (example: https://github.com/calmonr/cicd/pull/1)
 
 ## Tools
@@ -23,7 +23,9 @@ For now there are two behaviors:
 
 - [ ] [CLI completion](https://carlosbecker.com/posts/golang-completions-cobra/)
 - [ ] [Versioning](https://goreleaser.com/cookbooks/using-main.version)
-- [ ] [Docker images](https://goreleaser.com/customization/docker/)
+- [x] [Docker images](https://goreleaser.com/customization/docker/)
+  - [x] GitHub Container Registry
+  - [x] Docker Hub
 - [ ] Sign [checksums, artifacts](https://goreleaser.com/customization/sign/), [Docker images and manifests](https://goreleaser.com/customization/docker_sign/)
 
 > Probably more to come.
