@@ -5,7 +5,7 @@
 For now there are two behaviors:
 
 1. If you push a new tag ([following standads](https://goreleaser.com/limitations/semver/)) it will automatically build and release.
-2. If you send a pull request it will lint.
+2. If you send a pull request it will lint. (example: https://github.com/calmonr/cicd/pull/1)
 
 ## Tools
 
