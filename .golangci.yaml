@@ -1,0 +1,48 @@
+---
+linters:
+  disable-all: true
+  enable:
+    - containedctx
+    - decorder
+    - dogsled
+    - durationcheck
+    - errcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - forcetypeassert
+    - gochecknoglobals
+    - goconst
+    - gocritic
+    - godot
+    - goerr113
+    - gofmt
+    - goimports
+    - gomnd
+    - gosec
+    - gosimple
+    - govet
+    - grouper
+    - ineffassign
+    - lll
+    - makezero
+    - nestif
+    - nilnil
+    - prealloc
+    - predeclared
+    - revive
+    - staticcheck
+    - stylecheck
+    - tagliatelle
+    - tenv
+    - testpackage
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - wrapcheck
+    - wsl
+
+linters-settings:
+  lll:
+    line-length: 120
