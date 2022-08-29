@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/calmonr/cicd/internal/greeting"
+)
 
 func main() {
-	fmt.Println("Welcome to the jungle!")
+	fmt.Println(greeting.Hi("Calmon Ribeiro"))
 }
