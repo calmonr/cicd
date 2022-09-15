@@ -2,7 +2,7 @@
 
 This repository is a playground for experimenting with CI/CD in Go.
 
-## Usage
+## Usage (CI/CD)
 
 It's all based on pushes and pull requests. Here is the list of actions triggered based on each event:
 
@@ -15,9 +15,29 @@ You need to configure the following secrets in the repository settings:
 - `DOCKERHUB_TOKEN`: The token of the Docker Hub account.
 - `GITLEAKS_NOTIFY_USER_LIST`: The list of users to notify when a secret leak is found.
 
+## Usage (CLI)
+
+The application is a CLI with a gRPC server (graceful shutdown included) that has a greeting service.
+
+You can run the application using one of the following commands:
+
+```console
+go run cmd/playground/main.go
+```
+
+```console
+go run cmd/playground/main.go --config-file config/sample.yml
+```
+
+```console
+PLAYGROUND_GRPC_SERVER_ADDRESS=:50051 PLAYGROUND_GRPC_SERVER_NETWORK=tcp go run cmd/playground/main.go
+```
+
 ## gRPC
 
 [Buf](https://docs.buf.build/introduction) is used to lint the protobuf definitions and generate source code from them.
+
+> You only need to run the following commands if you made changes to the protobuf definitions
 
 ```console
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
@@ -61,6 +81,7 @@ buf generate -o pkg/proto proto/internal
 - [x] [Gitleaks](https://gitleaks.io/)
 - [x] [Cobra](https://cobra.dev/)
 - [x] [Viper](https://github.com/spf13/viper)
+- [x] [zap](https://github.com/uber-go/zap)
 - [x] [gRPC](https://grpc.io/)
   - [x] [Buf](https://buf.build/)
 - [ ] [Dagger](https://dagger.io/)
@@ -76,6 +97,7 @@ buf generate -o pkg/proto proto/internal
   - [x] Docker Hub
 - [ ] Sign [checksums, artifacts](https://goreleaser.com/customization/sign/), [Docker images and manifests](https://goreleaser.com/customization/docker_sign/)
 - [x] Tests
+- [ ] Improve the documentation
 
 > Probably more to come.
 
