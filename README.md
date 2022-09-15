@@ -15,6 +15,34 @@ You need to configure the following secrets in the repository settings:
 - `DOCKERHUB_TOKEN`: The token of the Docker Hub account.
 - `GITLEAKS_NOTIFY_USER_LIST`: The list of users to notify when a secret leak is found.
 
+## gRPC
+
+[Buf](https://docs.buf.build/introduction) is used to lint the protobuf definitions and generate source code from them.
+
+```console
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
+go install github.com/bufbuild/buf/cmd/buf@v1.8.0
+```
+
+Before we continue, let's verify that everything is set up properly:
+
+```console
+buf build
+```
+
+You can run all of the configured lint rules by running this command:
+
+```console
+buf lint
+```
+
+Now we can generate the source code for our gRPC service:
+
+```console
+buf generate -o pkg/proto proto/internal
+```
+
 ## Actions
 
 - The [build action](.github/workflows/build.yml) builds the binaries and runs the tests.
@@ -31,9 +59,10 @@ You need to configure the following secrets in the repository settings:
 - [x] [golangci-lint](https://golangci-lint.run/)
 - [x] [EditorConfig](https://editorconfig.org/)
 - [x] [Gitleaks](https://gitleaks.io/)
-- [ ] [Cobra](https://cobra.dev/)
-- [ ] [gRPC](https://grpc.io/)
-  - [ ] [Buf](https://buf.build/)
+- [x] [Cobra](https://cobra.dev/)
+- [x] [Viper](https://github.com/spf13/viper)
+- [x] [gRPC](https://grpc.io/)
+  - [x] [Buf](https://buf.build/)
 - [ ] [Dagger](https://dagger.io/)
 - [ ] [Task](https://taskfile.dev/)
 - [ ] [UPX](https://github.com/upx/upx)
