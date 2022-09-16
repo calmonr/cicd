@@ -49,8 +49,7 @@ func NewRoot() command.Runnable {
 			}
 		}
 
-		cfg := new(app.Config)
-		cfg.Fill()
+		cfg := new(app.Config).Fill()
 
 		listener, err := net.Listen(cfg.GRPCServer.Network, cfg.GRPCServer.Address)
 		if err != nil {

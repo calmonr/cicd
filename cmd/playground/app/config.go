@@ -8,8 +8,10 @@ type Config struct {
 	}
 }
 
-func (c *Config) Fill() {
+func (c Config) Fill() Config {
 	// grpc server
 	c.GRPCServer.Address = viper.GetString(PrefixGRPCServer + SuffixAddress)
 	c.GRPCServer.Network = viper.GetString(PrefixGRPCServer + SuffixNetwork)
+
+	return c
 }
