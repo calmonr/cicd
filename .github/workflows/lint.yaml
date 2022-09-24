@@ -45,7 +45,7 @@ jobs:
 
   buf-breaking:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    if: false
     steps:
       - uses: actions/checkout@v3
         with:
