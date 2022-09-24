@@ -25,4 +25,36 @@ jobs:
           go-version: 1.18
       - uses: golangci/golangci-lint-action@v3
         with:
+          version: v1.49.0
           only-new-issues: true
+
+  buf:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          version: v1.8.0
+          github_token: ${{ github.token }}
+      - uses: bufbuild/buf-lint-action@v1
+        with:
+          input: proto/internal
+
+  buf-breaking:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          version: v1.8.0
+          github_token: ${{ github.token }}
+      - uses: bufbuild/buf-breaking-action@v1
+        with:
+          input: proto/internal
+          against: https://github.com/$GITHUB_REPOSITORY.git#branch=main,ref=HEAD~1,subdir=proto/internal

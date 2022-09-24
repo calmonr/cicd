@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package greeting.v1;
+
+option go_package = "github.com/calmonr/cicd/pkg/proto/greeting/v1";
+
+service GreetingService {
+  rpc Hi(HiRequest) returns (HiResponse);
+}
+
+message HiRequest {
+  string name = 1;
+}
+
+message HiResponse {
+  string message = 1;
+}

@@ -3,7 +3,7 @@ package greeting_test
 import (
 	"testing"
 
-	"github.com/calmonr/cicd/internal/greeting"
+	"github.com/calmonr/cicd/pkg/greeting"
 	"github.com/stretchr/testify/assert"
 )
 
