@@ -1,0 +1,2 @@
+* -text
+*.pb.go -diff linguist-generated
