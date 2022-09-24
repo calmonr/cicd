@@ -8,6 +8,7 @@ import (
 	"github.com/calmonr/cicd/cmd/playground/app/command"
 	"github.com/calmonr/cicd/cmd/playground/app/runnable"
 	"github.com/calmonr/cicd/internal/cli"
+	"github.com/calmonr/cicd/pkg/version"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 )
@@ -36,6 +37,7 @@ func main() {
 	}
 
 	cmd := command.NewRoot(runnable.NewRoot(), flags)
+	cmd.AddCommand(version.Command())
 
 	if err := cmd.Execute(); err != nil {
 		log.Fatalf("could not execute command: %v", err)

@@ -4,6 +4,11 @@ project_name: cicd
 builds:
   - main: ./cmd/playground
     binary: playground
+    ldflags:
+      - -s -w
+      - -X github.com/calmonr/cicd/pkg/version.version={{.Version}}
+      - -X github.com/calmonr/cicd/pkg/version.commit={{.Commit}}
+      - -X github.com/calmonr/cicd/pkg/version.date={{.Date}}
     env:
       - CGO_ENABLED=0
     goos:
