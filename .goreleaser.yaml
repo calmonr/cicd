@@ -1,6 +1,10 @@
 ---
 project_name: cicd
 
+before:
+  hooks:
+    - sh ./scripts/generate-completions.sh
+
 builds:
   - main: ./cmd/playground
     binary: playground
@@ -26,7 +30,9 @@ archives:
       - goos: windows
         format: zip
     files:
+      - completions/*
       - LICENSE
+      - README.md
 
 checksum:
   name_template: checksums.txt
