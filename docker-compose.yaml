@@ -1,0 +1,11 @@
+---
+version: "3"
+services:
+  playground:
+    image: calmonr/cicd:latest
+    ports:
+      - 50051:50051
+    environment:
+      PLAYGROUND_LOG_LEVEL: info
+      PLAYGROUND_GRPC_SERVER_ADDRESS: 50051
+      PLAYGROUND_GRPC_SERVER_NETWORK: tcp
